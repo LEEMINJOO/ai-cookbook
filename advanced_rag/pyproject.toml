@@ -1,0 +1,23 @@
+[project]
+name = "advanced-rag"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "accelerate>=1.4.0",
+    "datasets>=3.3.2",
+    "faiss-cpu>=1.10.0",
+    "fire>=0.7.0",
+    "ipywidgets>=8.1.5",
+    "langchain>=0.3.19",
+    "langchain-community>=0.3.18",
+    "matplotlib>=3.10.0",
+    "openpyxl>=3.1.5",
+    "pacmap>=0.8.0",
+    "plotly>=6.0.0",
+    "ragatouille>=0.0.9",
+    "sentence-transformers>=3.4.1",
+    "torch>=2.6.0",
+    "transformers>=4.49.0",
+]
