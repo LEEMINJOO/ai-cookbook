@@ -1,3 +1,5 @@
+import fire
+
 from src.dataset import load_documents
 from src.retrieval import build_knowledge_db, retrive
 from src.llm import get_reader, build_message
@@ -29,3 +31,7 @@ def run(query, verbose=False):
     answer = reader(message)
 
     print(answer)
+
+
+if __name__ == "__main__":
+    fire.Fire(run)

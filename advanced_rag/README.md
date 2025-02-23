@@ -9,3 +9,7 @@ https://huggingface.co/learn/cookbook/advanced_rag
 ```bash
 source bin/env.sh
 ```
+
+```bash
+python main.py "How to create a pipeline object?"
+```

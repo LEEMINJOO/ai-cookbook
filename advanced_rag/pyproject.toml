@@ -8,6 +8,7 @@ dependencies = [
     "accelerate>=1.4.0",
     "datasets>=3.3.2",
     "faiss-cpu>=1.10.0",
+    "fire>=0.7.0",
     "ipywidgets>=8.1.5",
     "langchain>=0.3.19",
     "langchain-community>=0.3.18",
