@@ -10,8 +10,20 @@ from src.config import (
     NUM_RETREIVERS,
     NUM_RETREIVERS_FINAL,
 )
+from src.dataset import load_documents
 
+knowledge_db = None
 reranker = None
+
+
+def load_knowledge_db(verbose):
+    global knowledge_db
+
+    if knowledge_db is None:
+        docs = load_documents(verbose=verbose)
+        knowledge_db = build_knowledge_db(docs)
+
+    return knowledge_db
 
 
 def build_knowledge_db(docs):
