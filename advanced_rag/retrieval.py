@@ -2,7 +2,7 @@ from langchain.vectorstores import FAISS
 
 from ragatouille import RAGPretrainedModel
 
-from src.config import (
+from config import (
     RERANKER_MODEL_NAME,
     NUM_RETREIVERS,
     NUM_RETREIVERS_FINAL,

@@ -18,6 +18,7 @@ dependencies = [
     "plotly>=6.0.0",
     "ragatouille>=0.0.9",
     "sentence-transformers>=3.4.1",
+    "setuptools>=75.8.0",
     "torch>=2.6.0",
     "transformers>=4.49.0",
 ]

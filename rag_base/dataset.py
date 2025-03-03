@@ -8,7 +8,7 @@ from transformers import AutoTokenizer
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from src.config import EMBEDDING_MODEL_NAME, MARKDOWN_SEPARATORS
+from rag_base.config import EMBEDDING_MODEL_NAME, MARKDOWN_SEPARATORS
 
 
 def load_documents(

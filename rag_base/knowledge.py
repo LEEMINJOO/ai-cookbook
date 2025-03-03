@@ -3,22 +3,20 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores.utils import DistanceStrategy
 
 import numpy as np
-import pacmap
 import pandas as pd
-import plotly.express as px
 
-from src.config import EMBEDDING_MODEL_NAME
-from src.dataset import load_documents
+from rag_base.config import EMBEDDING_MODEL_NAME
+from rag_base.dataset import load_documents
 
 knowledge_db = None
 
 
-def load_knowledge_db(verbose):
+def load_knowledge_db(dataset_name="m-ric/huggingface_doc", verbose=False):
     global knowledge_db
 
     if knowledge_db is None:
         docs = load_documents(
-            dataset_name="m-ric/huggingface_doc",
+            dataset_name=dataset_name,
             verbose=verbose,
         )
         knowledge_db = build_knowledge_db(docs)
@@ -48,6 +46,9 @@ def recontruct_embeddings(knowledge_db: FAISS):
 
 
 def visualize_knowledge_db(knowledge_db: FAISS, query):
+    import pacmap
+    import plotly.express as px
+
     query_vector = knowledge_db._embed_query(query)
 
     embedding_projector = pacmap.PaCMAP(

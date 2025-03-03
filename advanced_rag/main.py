@@ -1,12 +1,13 @@
 import fire
 
-from src.knowledge import load_knowledge_db, visualize_knowledge_db
-from src.retrieval import retrive
-from src.llm import get_reader, build_message
+from rag_base.knowledge import load_knowledge_db, visualize_knowledge_db
+
+from retrieval import retrive
+from llm import get_reader, build_message
 
 
 def run(query, verbose=False):
-    knowledge_db = load_knowledge_db(verbose)
+    knowledge_db = load_knowledge_db(verbose=verbose)
     if verbose:
         visualize_knowledge_db(knowledge_db, query)
 

@@ -4,7 +4,7 @@ import getpass
 from huggingface_hub import InferenceClient
 from transformers import AutoTokenizer
 
-from src.config import READER_MODEL_NAME, PROMPT_TEMPLATE
+from config import READER_MODEL_NAME, PROMPT_TEMPLATE
 
 HF_TOKEN = getpass.getpass("HF_TOKEN:")
 

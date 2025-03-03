@@ -1,18 +1,5 @@
-EMBEDDING_MODEL_NAME = "thenlper/gte-small"
 READER_MODEL_NAME = "HuggingFaceH4/zephyr-7b-beta"
 RERANKER_MODEL_NAME = "colbert-ir/colbertv2.0"
-
-MARKDOWN_SEPARATORS = [
-    "\n#{1,6} ",
-    "```\n",
-    "\n\\*\\*\\*+\n",
-    "\n---+\n",
-    "\n___+\n",
-    "\n\n",
-    "\n",
-    " ",
-    "",
-]
 
 PROMPT_TEMPLATE = [
     {
