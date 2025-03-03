@@ -16,8 +16,9 @@ from config import (
     NUM_RETREIVERS_FINAL,
 )
 
-HF_TOKEN = getpass.getpass("HF_TOKEN:")
 reranker = None
+
+HF_TOKEN = getpass.getpass("HF_TOKEN:")
 
 
 def run(query, verbose=False):
