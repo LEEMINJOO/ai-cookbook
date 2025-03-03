@@ -20,8 +20,8 @@ def load_documents(
     return docs
 
 
-def load_dataset(dataset_name):
-    ds = datasets.load_dataset(dataset_name, split="train")
+def load_dataset(dataset_name, split="train"):
+    ds = datasets.load_dataset(dataset_name, split=split)
     return ds
 
 
