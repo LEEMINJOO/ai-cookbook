@@ -1,9 +1,10 @@
 import datasets
-from langchain.docstore.document import Document as LangchainDocument
+
+from langchain.docstore.document import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+
 from sentence_transformers import SentenceTransformer
 from transformers import AutoTokenizer
-
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -27,9 +28,7 @@ def load_dataset(dataset_name):
 def convert_documents(ds):
     docs = []
     for data in ds:
-        doc = LangchainDocument(
-            page_content=data["text"], metadata={"source": data["source"]}
-        )
+        doc = Document(page_content=data["text"], metadata={"source": data["source"]})
         docs.append(doc)
     return docs
 

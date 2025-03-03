@@ -1,8 +1,8 @@
 import fire
 
-from src.retrieval import load_knowledge_db, retrive
+from src.knowledge import load_knowledge_db, visualize_knowledge_db
+from src.retrieval import retrive
 from src.llm import get_reader, build_message
-from src.visualization import visualize_knowledge_db
 
 
 def run(query, verbose=False):

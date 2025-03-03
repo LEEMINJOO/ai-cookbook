@@ -1,12 +1,53 @@
+from langchain.vectorstores import FAISS
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.vectorstores.utils import DistanceStrategy
+
 import numpy as np
 import pacmap
 import pandas as pd
 import plotly.express as px
 
-from src.retrieval import recontruct_embeddings
+from src.config import EMBEDDING_MODEL_NAME
+from src.dataset import load_documents
+
+knowledge_db = None
 
 
-def visualize_knowledge_db(knowledge_db, query):
+def load_knowledge_db(verbose):
+    global knowledge_db
+
+    if knowledge_db is None:
+        docs = load_documents(
+            dataset_name="m-ric/huggingface_doc",
+            verbose=verbose,
+        )
+        knowledge_db = build_knowledge_db(docs)
+
+    return knowledge_db
+
+
+def build_knowledge_db(docs) -> FAISS:
+    embedding_model = HuggingFaceEmbeddings(
+        model_name=EMBEDDING_MODEL_NAME,
+        multi_process=True,
+        # model_kwargs={"device": "cuda"},
+        encode_kwargs={
+            "normalize_embeddings": True  # Set `True` for cosine similarity
+        },
+    )
+
+    knowledge_db = FAISS.from_documents(
+        docs, embedding_model, distance_strategy=DistanceStrategy.COSINE
+    )
+    return knowledge_db
+
+
+def recontruct_embeddings(knowledge_db: FAISS):
+    ntotal = knowledge_db.index.ntotal
+    return [list(knowledge_db.index.reconstruct_n(idx, 1)[0]) for idx in range(ntotal)]
+
+
+def visualize_knowledge_db(knowledge_db: FAISS, query):
     query_vector = knowledge_db._embed_query(query)
 
     embedding_projector = pacmap.PaCMAP(
@@ -48,7 +89,7 @@ def visualize_knowledge_db(knowledge_db, query):
     fig.show()
 
 
-def _build_df_knowledge(knowledge_db, query, embegddings_2d):
+def _build_df_knowledge(knowledge_db: FAISS, query, embegddings_2d):
     ntotal = knowledge_db.index.ntotal
 
     data = []
