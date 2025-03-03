@@ -1,0 +1,3 @@
+NUM_RETREIVERS_FINAL = 5
+
+AGENT_MODEL_NAME = "Qwen/Qwen2.5-Coder-32B-Instruct"

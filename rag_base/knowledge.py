@@ -40,6 +40,7 @@ def build_knowledge_db(dataset_name, save_path, verbose) -> FAISS:
             save_path,
             embedding_model,
             allow_dangerous_deserialization=True,
+            distance_strategy=DistanceStrategy.COSINE,
         )
         return knowledge_db
 
