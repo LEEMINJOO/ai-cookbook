@@ -1,6 +1,7 @@
 import fire
 
 from rag_base.knowledge import load_knowledge_db, visualize_knowledge_db
+from rag_base.evaluator import Evaluator
 from modules import RAG
 
 
@@ -12,6 +13,10 @@ def run(query, verbose=False):
     rag = RAG(vectordb=knowledge_db)
     answer = rag.run(query)
     print(answer)
+
+    # Evaluation
+    evaluator = Evaluator()
+    evaluator.run(rag, n=5)
 
 
 if __name__ == "__main__":
