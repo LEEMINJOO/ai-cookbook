@@ -20,7 +20,10 @@ def load_knowledge_db(verbose):
     global knowledge_db
 
     if knowledge_db is None:
-        docs = load_documents(verbose=verbose)
+        docs = load_documents(
+            dataset_name="m-ric/huggingface_doc",
+            verbose=verbose,
+        )
         knowledge_db = build_knowledge_db(docs)
 
     return knowledge_db
