@@ -11,3 +11,5 @@ MARKDOWN_SEPARATORS = [
     " ",
     "",
 ]
+
+KNOWLEDGE_SAVE_PATH = "resources/knowledge"

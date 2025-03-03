@@ -1,3 +1,5 @@
+import os
+
 from langchain.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores.utils import DistanceStrategy
@@ -5,38 +7,54 @@ from langchain_community.vectorstores.utils import DistanceStrategy
 import numpy as np
 import pandas as pd
 
-from rag_base.config import EMBEDDING_MODEL_NAME
+from rag_base.config import EMBEDDING_MODEL_NAME, KNOWLEDGE_SAVE_PATH
 from rag_base.dataset import load_documents
 
 knowledge_db = None
 
 
-def load_knowledge_db(dataset_name="m-ric/huggingface_doc", verbose=False):
+def load_knowledge_db(
+    dataset_name="m-ric/huggingface_doc",
+    save_path=KNOWLEDGE_SAVE_PATH,
+    verbose=False,
+):
     global knowledge_db
-
     if knowledge_db is None:
-        docs = load_documents(
-            dataset_name=dataset_name,
-            verbose=verbose,
-        )
-        knowledge_db = build_knowledge_db(docs)
+        knowledge_db = build_knowledge_db(dataset_name, save_path, verbose)
 
     return knowledge_db
 
 
-def build_knowledge_db(docs) -> FAISS:
+def build_knowledge_db(dataset_name, save_path, verbose) -> FAISS:
     embedding_model = HuggingFaceEmbeddings(
         model_name=EMBEDDING_MODEL_NAME,
         multi_process=True,
         # model_kwargs={"device": "cuda"},
-        encode_kwargs={
-            "normalize_embeddings": True  # Set `True` for cosine similarity
-        },
+        encode_kwargs={"normalize_embeddings": True},
     )
 
-    knowledge_db = FAISS.from_documents(
-        docs, embedding_model, distance_strategy=DistanceStrategy.COSINE
+    save_path = os.path.join(save_path, dataset_name.replace("/", "-"))
+    if os.path.exists(save_path):
+        print(f"Load saved knowledge db index: {save_path}")
+        knowledge_db = FAISS.load_local(
+            save_path,
+            embedding_model,
+            allow_dangerous_deserialization=True,
+        )
+        return knowledge_db
+
+    docs = load_documents(
+        dataset_name=dataset_name,
+        verbose=verbose,
     )
+    knowledge_db = FAISS.from_documents(
+        docs,
+        embedding_model,
+        distance_strategy=DistanceStrategy.COSINE,
+    )
+
+    print(f"Save knowledge db index: {save_path}")
+    knowledge_db.save_local(save_path)
     return knowledge_db
 
 
