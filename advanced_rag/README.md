@@ -11,12 +11,6 @@ source bin/env.sh
 python main.py "How to create a pipeline object?"
 ```
 
-## TODO
-- src.dataset: 유튜브 데이터
-- src.retreival: Knowledge DB Faiss 저장/로드
-- main: Multi 입력
-
-
 ## Reference
 https://huggingface.co/learn/cookbook/advanced_rag
 

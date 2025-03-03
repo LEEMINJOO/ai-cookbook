@@ -1,21 +1,16 @@
 import fire
 
-from src.retrieval import load_knowledge_db, retrive
-from src.llm import get_reader, build_message
-from src.visualization import visualize_knowledge_db
+from rag_base.knowledge import load_knowledge_db, visualize_knowledge_db
+from modules import RAG
 
 
 def run(query, verbose=False):
-    knowledge_db = load_knowledge_db(verbose)
+    knowledge_db = load_knowledge_db(verbose=verbose)
     if verbose:
         visualize_knowledge_db(knowledge_db, query)
 
-    contexts = retrive(query, knowledge_db, verbose=verbose)
-    message = build_message(query, contexts)
-
-    reader = get_reader()
-    answer = reader(message)
-
+    rag = RAG(vectordb=knowledge_db)
+    answer = rag.run(query)
     print(answer)
 
 
