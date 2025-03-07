@@ -8,4 +8,5 @@ uv run server.py
 
 ## Reference
 https://modelcontextprotocol.io/quickstart/server
-
+https://modelcontextprotocol.io/quickstart/client
+https://github.com/modelcontextprotocol/python-sdk?tab=readme-ov-file#writing-mcp-clients
