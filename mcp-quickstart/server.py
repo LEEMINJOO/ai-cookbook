@@ -76,7 +76,7 @@ async def get_forecast(latitude: float, longitude: float) -> str:
 
     periods = forecast_data["properties"]["periods"]
     forecasts = []
-    for period in periods[:5]:
+    for period in periods[:1]:
         forecast = (
             f"{period['name']}:"
             f"Temperature: {period['temperature']}°{period['temperatureUnit']}"

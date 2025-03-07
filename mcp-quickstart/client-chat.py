@@ -44,16 +44,16 @@ class MCPClient:
         return result.content
 
 
-async def run(server_script_path, query="What’s the weather in Sacramento?"):
+async def run(server_script_path, query="What are the active weather alerts in Texas?"):
 
     server_params = StdioServerParameters(
         command="python", args=[server_script_path]
     )  # command="uv", args=["run", server_script_path]
 
-    client = MCPClient()
-    await client.connect_to_server(server_params)
+    mcp_client = MCPClient()
+    await mcp_client.connect_to_server(server_params)
 
-    tools = await client.get_tools()
+    tools = await mcp_client.get_tools()
     print("Tools:")
     pprint(tools)
 
@@ -71,7 +71,10 @@ async def run(server_script_path, query="What’s the weather in Sacramento?"):
     function = response.choices[0].message.tool_calls[0].function
 
     print(f"\nQuery: {query}\n")
-    print(f"Selected Tool: {function.name} - {function.arguments}")
+    print(f"Selected Tool: {function.name} - {function.arguments}\n")
+
+    result = await mcp_client.call_tool(function.name, function.arguments)
+    print(f"Result: \n {result[0].text}")
 
 
 if __name__ == "__main__":
