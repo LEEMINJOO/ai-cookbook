@@ -31,11 +31,3 @@
 
    python -m ipykernel install --user --name {name} --display-name {name}
    ```
-
-## 가이드라인
-* rag 기본 개념을 알고 싶다? advanced_rag
-* rag 를 이용한 agent 를 구현하고 싶다? agent_rag
-* mcp 서버를 이해하고 싶다? mcp-quickstart
-* text2sql 기본 개념?
-* text to sql mcp 서버를 하려면?
-  * db 정보는 rag 로 가져오고 
