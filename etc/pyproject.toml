@@ -9,6 +9,7 @@ dependencies = [
     "huggingface-hub>=0.29.3",
     "ipykernel>=6.29.5",
     "ipywidgets>=8.1.6",
+    "openai>=1.72.0",
     "outlines>=0.2.1",
     "pandas>=2.2.3",
     "pillow>=11.1.0",

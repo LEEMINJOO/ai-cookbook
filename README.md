@@ -14,6 +14,7 @@
 | [mcp-quickstart](./mcp-quickstart/) | [Model Context Protocol](https://modelcontextprotocol.io/introduction) | 2025.03.09 |
 | [structured_generation](./etc/structured_generation.ipynb) | [RAG with source highlighting using Structured generation](https://huggingface.co/learn/cookbook/structured_generation) | 2025.04.05 |
 | [serverless-api](./etc/serverless_api.ipynb) | [Serverless Inference API](https://huggingface.co/learn/cookbook/enterprise_hub_serverless_inference_api) | 2025.04.12 |
+| [effective-agent](./etc/effective-agent.ipynb) | [파이썬으로 AI 에이전트 만들기](https://github.com/dabidstudio/python-ai-agents) | 2025.04.12 |
 
 
 ### Evironment
