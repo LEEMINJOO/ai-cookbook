@@ -13,6 +13,7 @@
 |------|------|------|
 | [mcp-quickstart](./mcp-quickstart/) | [Model Context Protocol](https://modelcontextprotocol.io/introduction) | 2025.03.09 |
 | [structured_generation](./etc/structured_generation.ipynb) | [RAG with source highlighting using Structured generation](https://huggingface.co/learn/cookbook/structured_generation) | 2025.04.05 |
+| [serverless-api](./etc/serverless_api.ipynb) | [Serverless Inference API](https://huggingface.co/learn/cookbook/enterprise_hub_serverless_inference_api) | 2025.04.12 |
 
 
 ### Evironment
@@ -32,3 +33,11 @@
 
    python -m ipykernel install --user --name {name} --display-name {name}
    ```
+
+## 가이드라인
+* rag 기본 개념을 알고 싶다? advanced_rag
+* rag 를 이용한 agent 를 구현하고 싶다? agent_rag
+* mcp 서버를 이해하고 싶다? mcp-quickstart
+* text2sql 기본 개념?
+* text to sql mcp 서버를 하려면?
+  * db 정보는 rag 로 가져오고 
