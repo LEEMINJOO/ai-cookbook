@@ -12,6 +12,7 @@
 | name | source | updated |
 |------|------|------|
 | [mcp-quickstart](./mcp-quickstart/) | [Model Context Protocol](https://modelcontextprotocol.io/introduction) | 2025.03.09 |
+| [structured_generation](./etc/structured_generation.ipynb) | [RAG with source highlighting using Structured generation](https://huggingface.co/learn/cookbook/structured_generation) | 2025.04.05 |
 
 
 ### Evironment
