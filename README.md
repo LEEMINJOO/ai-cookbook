@@ -1,5 +1,9 @@
 # ai-cookbook
 
+## Basic
+[Agent 와 MCP](./agent-mcp-basic.ipynb)
+
+
 ## Huggingface-Learn
 | name | source | updated |
 |------|------|------|
