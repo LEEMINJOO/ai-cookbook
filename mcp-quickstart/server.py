@@ -88,4 +88,4 @@ async def get_forecast(latitude: float, longitude: float) -> str:
 
 
 if __name__ == "__main__":
-    mcp.run(transport="stdio")
+    mcp.run(transport="sse")
